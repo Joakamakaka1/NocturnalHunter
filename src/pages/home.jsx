@@ -69,7 +69,10 @@ export default function Home() {
               Intenta sobrevivir en el campo de batalla mientras eliminas
               enemigos con personajes diversos que podrás elegir.
             </p>
-            <button className="mt-6 bg-blue-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-600 transition">
+            <button 
+              className="mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-700 transition"
+              aria-label="Iniciar juego"
+            >
               Empezar
             </button>
           </div>
@@ -89,6 +92,7 @@ export default function Home() {
           <button
             onClick={handlePrevImage}
             className="text-white bg-[#222121] p-3 rounded-full hover:bg-gray-700 transition"
+            aria-label="Imagen anterior"
           >
             Prev
           </button>
@@ -117,6 +121,7 @@ export default function Home() {
           <button
             onClick={handleNextImage}
             className="text-white bg-[#222121] p-3 rounded-full hover:bg-gray-700 transition"
+            aria-label="Imagen siguiente"
           >
             Next
           </button>
@@ -126,9 +131,9 @@ export default function Home() {
       {/* Detalles del Juego */}
       <section className="px-6 py-10 md:px-12">
         <div className="max-w-[75%] mx-auto">
-          <h1 className="text-6xl text-white animate-on-scroll opacity-0 translate-y-10">
+          <h2 className="text-6xl text-white animate-on-scroll opacity-0 translate-y-10">
             Detalles del juego
-          </h1>
+          </h2>
           <p className="text-lg text-gray-400 mt-4 animate-on-scroll opacity-0 translate-y-10">
             Nocturnal Hunters es un juego de supervivencia al estilo roguelike.
             Consiste en sobrevivir mientras eliminas diversos enemigos, con
@@ -176,14 +181,14 @@ export default function Home() {
 
           {/* Bloque de Texto */}
           <div className="text-left animate-on-scroll">
-            <h1 className="text-6xl text-white pb-4">Arandor el Sabio</h1>
-            <h2 className="text-3xl text-[rgb(128,95,247)]">Medio mago, medio caballero</h2>
+            <h2 className="text-6xl text-white pb-4">Arandor el Sabio</h2>
+            <h3 className="text-3xl text-[rgb(128,95,247)]">Medio mago, medio caballero</h3>
             <p className="text-lg text-gray-400 mt-4">
               Este es un breve resumen del personaje, su historia, habilidades y
               cómo puede ayudarte en tu lucha por sobrevivir en el juego. Cada
               personaje tiene sus propias fortalezas y debilidades.
             </p>
-            <button className="mt-6 bg-blue-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-600 transition">
+            <button className="mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-700 transition">
               Saber más
             </button>
           </div>
