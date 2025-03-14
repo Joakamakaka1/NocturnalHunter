@@ -5,24 +5,24 @@ export default function Home() {
 
   // Lista de imágenes
   const images = [
-    "imgs/mainJuego.webp",
-    "imgs/mainJuego.webp",
-    "imgs/mainJuego.webp",
-    "imgs/mainJuego.webp",
-    "imgs/mainJuego.webp",
-    "imgs/mainJuego.webp",
-    "imgs/mainJuego.webp",
-    "imgs/mainJuego.webp",
+    "imgs/pelea2.webp",
+    "imgs/npc.webp",
+    "imgs/mejoras.webp",
+    "imgs/pelea.webp",
   ];
 
   // Función para pasar a la siguiente imagen
   const handleNextImage = () => {
-    setCurrentImage((prev) => (prev + 1) % images.length);
+    if (currentImage < images.length - 3) {
+      setCurrentImage((prev) => prev + 1);
+    }
   };
 
   // Función para ir a la imagen anterior
   const handlePrevImage = () => {
-    setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
+    if (currentImage > 0) {
+      setCurrentImage((prev) => prev - 1);
+    }
   };
 
   // Inicializa IntersectionObserver para animar los elementos cuando entren en el viewport
@@ -55,21 +55,23 @@ export default function Home() {
     // Limpieza del observer cuando el componente se desmonte
     return () => observer.disconnect();
   }, []);
-
+  
   return (
     <div className="bg-[#181818] text-white">
       {/* Sección de Bienvenida */}
-      <section className="flex items-center justify-center px-6 py-20 md:px-12">
+      <section className="flex items-center justify-center px-6 py-20 md:px-12 animate-on-scroll opacity-0 translate-y-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-[75%] border-b-[0.5px] border-b-[rgb(60,60,60)] pb-20">
           {/* Bloque de Texto */}
-          <div className="text-left animate-on-scroll opacity-0 translate-y-10">
+          <div className="text-left">
             <h1 className="text-6xl text-white pb-4">¡Bienvenido a</h1>
-            <h2 className="text-6xl text-[rgb(128,95,247)]">Nocturnal Hunters!</h2>
+            <h2 className="text-6xl text-[rgb(128,95,247)]">
+              Nocturnal Hunters!
+            </h2>
             <p className="text-lg text-gray-400 mt-4">
               Intenta sobrevivir en el campo de batalla mientras eliminas
               enemigos con personajes diversos que podrás elegir.
             </p>
-            <button 
+            <button
               className="mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-700 transition"
               aria-label="Iniciar juego"
             >
@@ -78,8 +80,13 @@ export default function Home() {
           </div>
 
           {/* Bloque de Video */}
-          <div className="w-full animate-on-scroll opacity-0 translate-y-10">
-            <video className="w-full h-auto rounded-lg shadow-lg" autoPlay muted loop>
+          <div className="w-full">
+            <video
+              className="w-full h-auto rounded-lg shadow-lg"
+              autoPlay
+              muted
+              loop
+            >
               <source src="video/video.mp4" type="video/mp4" />
             </video>
           </div>
@@ -93,28 +100,28 @@ export default function Home() {
             onClick={handlePrevImage}
             className="text-white bg-[#222121] p-3 rounded-full hover:bg-gray-700 transition"
             aria-label="Imagen anterior"
+            disabled={currentImage === 0}
           >
             Prev
           </button>
 
           <div className="flex overflow-hidden w-full justify-center">
-            <div
-              className="flex transition-transform duration-500"
-              style={{ transform: `translateX(-${currentImage * (100 / 4)}%)` }}
-            >
+            <div className="flex transition-transform duration-500">
               {/* Mapeo de las cartas con las imágenes */}
-              {images.map((image, index) => (
-                <div
-                  key={index}
-                  className="w-[320px] h-[400px] bg-gray-300 rounded-md overflow-hidden mx-2 animate-on-scroll opacity-0 translate-y-10"
-                >
-                  <img
-                    src={image}
-                    alt={`Imagen ${index + 1}`}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ))}
+              {images
+                .slice(currentImage, currentImage + 3)
+                .map((image, index) => (
+                  <div
+                    key={index}
+                    className="w-[400px] h-[300px] bg-gray-300 rounded-md overflow-hidden mx-2 animate-on-scroll opacity-0 translate-y-10"
+                  >
+                    <img
+                      src={image}
+                      alt={`Imagen ${currentImage + index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
             </div>
           </div>
 
@@ -122,6 +129,7 @@ export default function Home() {
             onClick={handleNextImage}
             className="text-white bg-[#222121] p-3 rounded-full hover:bg-gray-700 transition"
             aria-label="Imagen siguiente"
+            disabled={currentImage >= images.length - 2}
           >
             Next
           </button>
@@ -129,12 +137,10 @@ export default function Home() {
       </section>
 
       {/* Detalles del Juego */}
-      <section className="px-6 py-10 md:px-12">
+      <section className="px-6 py-10 md:px-12 animate-on-scroll opacity-0 translate-y-10">
         <div className="max-w-[75%] mx-auto">
-          <h2 className="text-6xl text-white animate-on-scroll opacity-0 translate-y-10">
-            Detalles del juego
-          </h2>
-          <p className="text-lg text-gray-400 mt-4 animate-on-scroll opacity-0 translate-y-10">
+          <h2 className="text-6xl text-white">Detalles del juego</h2>
+          <p className="text-lg text-gray-400 mt-4">
             Nocturnal Hunters es un juego de supervivencia al estilo roguelike.
             Consiste en sobrevivir mientras eliminas diversos enemigos, con
             personajes diversos que podrás elegir. Además, el juego cuenta con
@@ -168,7 +174,7 @@ export default function Home() {
       </section>
 
       {/* Presentación del Personaje */}
-      <section className="flex items-center justify-center px-6 py-10 md:px-12 pb-20">
+      <section className="flex items-center justify-center px-6 py-10 md:px-12 pb-20 animate-on-scroll opacity-0 translate-y-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-[75%] border-t-[0.5px] border-t-[rgb(60,60,60)] pt-20">
           {/* Bloque de Imagen */}
           <div className="w-full">
@@ -182,7 +188,9 @@ export default function Home() {
           {/* Bloque de Texto */}
           <div className="text-left animate-on-scroll">
             <h2 className="text-6xl text-white pb-4">Arandor el Sabio</h2>
-            <h3 className="text-3xl text-[rgb(128,95,247)]">Medio mago, medio caballero</h3>
+            <h3 className="text-3xl text-[rgb(128,95,247)]">
+              Medio mago, medio caballero
+            </h3>
             <p className="text-lg text-gray-400 mt-4">
               Este es un breve resumen del personaje, su historia, habilidades y
               cómo puede ayudarte en tu lucha por sobrevivir en el juego. Cada
