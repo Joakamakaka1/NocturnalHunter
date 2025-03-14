@@ -60,15 +60,11 @@ export default function Home() {
     <div className="bg-[#181818] text-white">
       {/* Sección de Bienvenida */}
       <section className="flex items-center justify-center px-6 py-20 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-[75%] items-center border-b-[0.5px] border-b-[rgb(60,60,60)] pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-[75%] border-b-[0.5px] border-b-[rgb(60,60,60)] pb-20">
           {/* Bloque de Texto */}
           <div className="text-left animate-on-scroll opacity-0 translate-y-10">
-            <h1 className="text-6xl md:text-6xl text-white pb-4">
-              ¡Bienvenido a
-            </h1>
-            <h2 className="text-6xl md:text-6xl text-[rgb(128,95,247)]">
-              Nocturnal Hunters!
-            </h2>
+            <h1 className="text-6xl text-white pb-4">¡Bienvenido a</h1>
+            <h2 className="text-6xl text-[rgb(128,95,247)]">Nocturnal Hunters!</h2>
             <p className="text-lg text-gray-400 mt-4">
               Intenta sobrevivir en el campo de batalla mientras eliminas
               enemigos con personajes diversos que podrás elegir.
@@ -80,12 +76,7 @@ export default function Home() {
 
           {/* Bloque de Video */}
           <div className="w-full animate-on-scroll opacity-0 translate-y-10">
-            <video
-              className="w-full h-auto rounded-lg shadow-lg"
-              autoPlay
-              muted
-              loop
-            >
+            <video className="w-full h-auto rounded-lg shadow-lg" autoPlay muted loop>
               <source src="video/video.mp4" type="video/mp4" />
             </video>
           </div>
@@ -133,7 +124,7 @@ export default function Home() {
       </section>
 
       {/* Detalles del Juego */}
-      <section className="bg-[#181818] text-white px-6 py-10 md:px-12">
+      <section className="px-6 py-10 md:px-12">
         <div className="max-w-[75%] mx-auto">
           <h1 className="text-6xl text-white animate-on-scroll opacity-0 translate-y-10">
             Detalles del juego
@@ -172,8 +163,8 @@ export default function Home() {
       </section>
 
       {/* Presentación del Personaje */}
-      <section className="flex items-center justify-center px-6 py-10 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-[75%] items-center border-t-[0.5px] border-t-[rgb(60,60,60)] pt-20 mb-20">
+      <section className="flex items-center justify-center px-6 py-10 md:px-12 pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-[75%] border-t-[0.5px] border-t-[rgb(60,60,60)] pt-20">
           {/* Bloque de Imagen */}
           <div className="w-full">
             <img
@@ -185,17 +176,16 @@ export default function Home() {
 
           {/* Bloque de Texto */}
           <div className="text-left animate-on-scroll">
-            <h1 className="text-6xl md:text-6xl text-white pb-4">
-              Arandor el Sabio
-            </h1>
-            <h2 className="text-3xl text-[rgb(128,95,247)]">
-              Medio mago, medio caballero
-            </h2>
+            <h1 className="text-6xl text-white pb-4">Arandor el Sabio</h1>
+            <h2 className="text-3xl text-[rgb(128,95,247)]">Medio mago, medio caballero</h2>
             <p className="text-lg text-gray-400 mt-4">
               Este es un breve resumen del personaje, su historia, habilidades y
               cómo puede ayudarte en tu lucha por sobrevivir en el juego. Cada
               personaje tiene sus propias fortalezas y debilidades.
             </p>
+            <button className="mt-6 bg-blue-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-600 transition">
+              Saber más
+            </button>
           </div>
         </div>
       </section>
