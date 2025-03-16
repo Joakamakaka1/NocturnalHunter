@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef} from "react";
 
 export default function Home() {
   const [currentImage, setCurrentImage] = useState(0);
+  const [volume, setVolume] = useState(0.1);
+  const videoRef = useRef(null);
 
   // Lista de imágenes
   const images = [
@@ -55,7 +57,12 @@ export default function Home() {
     // Limpieza del observer cuando el componente se desmonte
     return () => observer.disconnect();
   }, []);
-  
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.volume = volume; // Cambia el volumen del video
+    }
+  }, [volume]);
   return (
     <div className="bg-[#181818] text-white">
       {/* Sección de Bienvenida */}
@@ -82,13 +89,30 @@ export default function Home() {
           {/* Bloque de Video */}
           <div className="w-full">
             <video
+              ref={videoRef} // Usamos la referencia aquí
               className="w-full h-auto rounded-lg shadow-lg"
               autoPlay
-              muted
               loop
             >
               <source src="video/video.mp4" type="video/mp4" />
             </video>
+
+            {/* Control de volumen */}
+            <div className="mt-4 flex justify-center">
+              <label htmlFor="volume" className="text-gray-400 mr-2">
+                Volumen
+              </label>
+              <input
+                id="volume"
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value={volume}
+                onChange={(e) => setVolume(parseFloat(e.target.value))}
+                className="w-48"
+              />
+            </div>
           </div>
         </div>
       </section>
