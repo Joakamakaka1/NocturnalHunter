@@ -89,12 +89,12 @@ export default function Home() {
           {/* Bloque de Video */}
           <div className="w-full">
             <video
-              ref={videoRef} // Usamos la referencia aquí
+              ref={videoRef}
               className="w-full h-auto rounded-lg shadow-lg"
               autoPlay
               loop
             >
-              <source src="video/video.mp4" type="video/mp4" />
+              <source src="/video/video.mp4" type="video/mp4" />
             </video>
 
             {/* Control de volumen */}
